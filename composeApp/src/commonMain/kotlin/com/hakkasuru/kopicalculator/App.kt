@@ -11,6 +11,6 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun App() {
     val colorScheme = if (isSystemInDarkTheme()) AppTheme.darkScheme else AppTheme.lightScheme
     MaterialTheme(colorScheme = colorScheme) {
-        HomeScreen()
+        KopiApp()
     }
 }
