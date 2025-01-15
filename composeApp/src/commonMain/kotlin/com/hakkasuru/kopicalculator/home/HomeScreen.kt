@@ -17,18 +17,24 @@ import kopicalculator.composeapp.generated.resources.coffee_beans
 import kopicalculator.composeapp.generated.resources.tea_bag_left
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navigateToDrinkOptions: (drinkID: String) -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp)
     ) {
         Text("Choose your drink", fontSize = 48.sp)
         Spacer(Modifier.height(16.dp))
-        DrinkOption()
+        DrinkOption(
+            onTap = navigateToDrinkOptions
+        )
     }
 }
 
 @Composable
-private fun DrinkOption() {
+private fun DrinkOption(
+    onTap: (drinkID: String) -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -36,13 +42,17 @@ private fun DrinkOption() {
         OptionCard(
             title = "Coffee",
             imageRes = Res.drawable.coffee_beans,
-            onTap = {}
+            onTap = {
+                onTap("coffee")
+            }
         )
         Spacer(Modifier.height(16.dp))
         OptionCard(
             title = "Tea",
             imageRes = Res.drawable.tea_bag_left,
-            onTap = {}
+            onTap = {
+                onTap("tea")
+            }
         )
     }
 }
