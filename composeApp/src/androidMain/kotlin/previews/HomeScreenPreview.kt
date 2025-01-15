@@ -8,5 +8,7 @@ import com.hakkasuru.kopicalculator.home.HomeScreen
 @Preview
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreen(
+        navigateToDrinkOptions = {}
+    )
 }
