@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,9 +37,10 @@ fun HomeScreen(
 private fun DrinkOption(
     onTap: (drinkID: String) -> Unit
 ) {
+
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         OptionCard(
             title = "Coffee",
@@ -52,6 +55,14 @@ private fun DrinkOption(
             imageRes = Res.drawable.tea_bag_left,
             onTap = {
                 onTap("tea")
+            }
+        )
+        Spacer(Modifier.height(16.dp))
+        OptionCard(
+            title = "Mixed",
+            imageRes = Res.drawable.tea_bag_left,
+            onTap = {
+                onTap("mixed")
             }
         )
     }
