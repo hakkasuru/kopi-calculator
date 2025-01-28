@@ -25,7 +25,7 @@ fun OptionCard(
     title: String,
     imageRes: DrawableResource,
     onTap: () -> Unit,
-    modifier: Modifier = Modifier.size(300.dp)
+    modifier: Modifier = Modifier.size(256.dp)
 ) {
     Box(modifier = modifier) {
         Card(modifier.matchParentSize()) {
