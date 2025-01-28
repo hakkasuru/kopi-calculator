@@ -8,7 +8,7 @@ import com.hakkasuru.kopicalculator.drink.DrinkOptionsScreen
 @Composable
 private fun DrinkOptionsScreenPreview() {
     DrinkOptionsScreen(
-        drinkID = "coffee",
+        drinkID = "mixed",
         navigateBack = {}
     )
 }
