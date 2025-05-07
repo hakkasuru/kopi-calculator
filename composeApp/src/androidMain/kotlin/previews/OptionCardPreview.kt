@@ -11,6 +11,7 @@ import kopicalculator.composeapp.generated.resources.coffee_beans
 private fun OptionCardPreview() {
     OptionCard(
         title = "Coffee",
+        subtitle = "Rich and energizing brew",
         imageRes = Res.drawable.coffee_beans,
         onTap = { /* no-op */ }
     )
