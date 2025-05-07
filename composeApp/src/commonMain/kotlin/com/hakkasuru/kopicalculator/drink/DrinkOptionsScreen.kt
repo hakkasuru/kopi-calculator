@@ -3,7 +3,6 @@ package com.hakkasuru.kopicalculator.drink
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,7 +13,6 @@ import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,8 +41,8 @@ fun DrinkOptionsScreen(
                 onNavigationIconTap = navigateBack
             )
         }
-    ) { innerPadding ->
-        Box(modifier = Modifier.fillMaxSize().consumeWindowInsets(innerPadding).padding(innerPadding)) {
+    ) { paddingValues ->
+        Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(text = "Milk Options", fontSize = 16.sp)
                 Spacer(Modifier.height(4.dp))

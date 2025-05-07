@@ -3,14 +3,17 @@ package com.hakkasuru.kopicalculator.home
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hakkasuru.kopicalculator.widgets.OptionCard
@@ -22,14 +25,21 @@ import kopicalculator.composeapp.generated.resources.tea_bag_left
 fun HomeScreen(
     navigateToDrinkOptions: (drinkID: String) -> Unit
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp)
-    ) {
-        Text("Choose your drink", fontSize = 48.sp)
-        Spacer(Modifier.height(16.dp))
-        DrinkOption(
-            onTap = navigateToDrinkOptions
-        )
+    Scaffold { paddingValues ->
+        Column(
+            modifier = Modifier.fillMaxSize().padding(paddingValues)
+        ) {
+            Text(
+                "Choose your drink",
+                modifier = Modifier.fillMaxWidth(),
+                fontSize = 48.sp,
+                textAlign = TextAlign.Center
+            )
+            Spacer(Modifier.height(16.dp))
+            DrinkOption(
+                onTap = navigateToDrinkOptions
+            )
+        }
     }
 }
 
