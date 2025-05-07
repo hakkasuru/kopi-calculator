@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.hakkasuru.kopicalculator.widgets.OptionCard
 import kopicalculator.composeapp.generated.resources.Res
 import kopicalculator.composeapp.generated.resources.coffee_beans
+import kopicalculator.composeapp.generated.resources.drink_hot
 import kopicalculator.composeapp.generated.resources.tea_bag_left
 
 @Composable
@@ -83,7 +84,7 @@ private fun DrinkOption(
         OptionCard(
             title = "Mixed",
             subtitle = "Best of both worlds",
-            imageRes = Res.drawable.tea_bag_left,
+            imageRes = Res.drawable.drink_hot,
             onTap = {
                 onTap("mixed")
             }
