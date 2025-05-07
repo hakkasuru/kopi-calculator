@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,7 +37,9 @@ fun OptionCard(
     onTap: () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxWidth().height(148.dp)) {
-        Card {
+        Card(
+            colors = CardDefaults.cardColors().copy(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+        ) {
             Column(
                 modifier = Modifier.clickable { onTap() }.fillMaxSize().padding(16.dp),
                 verticalArrangement = Arrangement.Center,
@@ -63,8 +67,8 @@ fun OptionCard(
                     Column(
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text(text = title, fontSize = 32.sp)
-                        Text(text = subtitle, fontSize = 28.sp)
+                        Text(text = title, fontSize = 32.sp, color = MaterialTheme.colorScheme.onSurface)
+                        Text(text = subtitle, fontSize = 24.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
             }
