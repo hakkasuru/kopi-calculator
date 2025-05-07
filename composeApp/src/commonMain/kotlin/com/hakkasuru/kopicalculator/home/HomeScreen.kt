@@ -30,6 +30,7 @@ fun HomeScreen(
         Column(
             modifier = Modifier.fillMaxSize().padding(paddingValues)
         ) {
+            Spacer(Modifier.height(16.dp))
             Text(
                 "Choose your drink",
                 modifier = Modifier.fillMaxWidth(),
@@ -37,6 +38,7 @@ fun HomeScreen(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
+            Spacer(Modifier.height(8.dp))
             Text(
                 text = "Select your preferred beverage to continue",
                 modifier = Modifier.fillMaxWidth(),

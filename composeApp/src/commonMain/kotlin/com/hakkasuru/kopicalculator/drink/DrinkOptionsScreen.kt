@@ -27,6 +27,7 @@ import com.hakkasuru.kopicalculator.widgets.AppBar
 @Composable
 fun DrinkOptionsScreen(
     drinkID: String,
+    onCalculate: (List<String>) -> Unit,
     navigateBack: () -> Unit
 ) {
     Scaffold(
@@ -42,25 +43,45 @@ fun DrinkOptionsScreen(
             )
         }
     ) { paddingValues ->
+        val milkOption = remember { mutableStateOf("Condensed") }
+        val sugarOption = remember { mutableStateOf("Normal") }
+        val strengthOption = remember { mutableStateOf("Normal") }
+        val iceOption = remember { mutableStateOf("No Ice") }
         Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(text = "Milk Options", fontSize = 16.sp)
                 Spacer(Modifier.height(4.dp))
-                OptionsBar(listOf("Condensed", "Evaporated", "None"))
+                OptionsBar(
+                    listOf("Condensed", "Evaporated", "None"),
+                    onSelect = { milkOption.value = it })
                 Spacer(Modifier.height(12.dp))
                 Text(text = "Sugar Options", fontSize = 16.sp)
                 Spacer(Modifier.height(4.dp))
-                OptionsBar(listOf("Normal", "More", "Less", "None"))
+                OptionsBar(
+                    listOf("Normal", "More", "Less", "None"),
+                    onSelect = { sugarOption.value = it })
                 Spacer(Modifier.height(12.dp))
                 Text(text = "Coffee Strength", fontSize = 16.sp)
                 Spacer(Modifier.height(4.dp))
-                OptionsBar(listOf("Normal", "Weak", "Strong", "No Water"))
+                OptionsBar(
+                    listOf("Normal", "Weak", "Strong", "No Water"),
+                    onSelect = { strengthOption.value = it })
                 Spacer(Modifier.height(12.dp))
                 Text(text = "Ice", fontSize = 16.sp)
                 Spacer(Modifier.height(4.dp))
-                OptionsBar(listOf("No Ice", "Ice"))
+                OptionsBar(listOf("No Ice", "Ice"), onSelect = { iceOption.value = it })
             }
-            Button(onClick = {}, modifier = Modifier.fillMaxWidth().padding(16.dp).align(Alignment.BottomCenter)) {
+            Button(onClick = {
+                onCalculate(
+                    listOf(
+                        drinkID,
+                        milkOption.value,
+                        sugarOption.value,
+                        strengthOption.value,
+                        iceOption.value
+                    )
+                )
+            }, modifier = Modifier.fillMaxWidth().padding(16.dp).align(Alignment.BottomCenter)) {
                 Text(text = "Calculate", modifier = Modifier.padding(8.dp), fontSize = 16.sp)
             }
         }
@@ -68,13 +89,16 @@ fun DrinkOptionsScreen(
 }
 
 @Composable
-private fun OptionsBar(options: List<String>) {
+private fun OptionsBar(options: List<String>, onSelect: (String) -> Unit) {
     var selectedIndex by remember { mutableStateOf(0) }
     SingleChoiceSegmentedButtonRow {
         options.forEachIndexed { index, option ->
             SegmentedButton(
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
-                onClick = { selectedIndex = index },
+                onClick = {
+                    selectedIndex = index
+                    onSelect(options[index])
+                },
                 selected = selectedIndex == index
             ) {
                 Text(text = option, modifier = Modifier.padding(4.dp))

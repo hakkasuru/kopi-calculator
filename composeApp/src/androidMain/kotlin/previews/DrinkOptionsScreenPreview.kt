@@ -9,6 +9,7 @@ import com.hakkasuru.kopicalculator.drink.DrinkOptionsScreen
 private fun DrinkOptionsScreenPreview() {
     DrinkOptionsScreen(
         drinkID = "mixed",
+        onCalculate = {},
         navigateBack = {}
     )
 }

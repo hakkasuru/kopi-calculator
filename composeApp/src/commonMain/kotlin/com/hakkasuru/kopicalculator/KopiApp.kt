@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.hakkasuru.kopicalculator.drink.DrinkOptionsScreen
+import com.hakkasuru.kopicalculator.drink.DrinkResult
 import com.hakkasuru.kopicalculator.home.HomeScreen
 
 @Composable
@@ -43,6 +44,34 @@ fun KopiApp(
                 val drinkID = navBackStackEntry.arguments?.getString(DestinationArgs.ARG_ID) ?: ""
                 DrinkOptionsScreen(
                     drinkID = drinkID,
+                    onCalculate = { options ->
+                        navController.navigate(
+                            AppDestination.DRINK_RESULT.route.replace(
+                                "{${DestinationArgs.ARG_OPTIONS}}",
+                                options.joinToString(separator = ",")
+                            )
+                        )
+                    },
+                    navigateBack = { navController.popBackStack() }
+                )
+            }
+            composable(
+                route = AppDestination.DRINK_RESULT.route,
+                arguments = listOf(
+                    navArgument(DestinationArgs.ARG_OPTIONS) {
+                        type = NavType.StringType
+                        nullable = false
+                        defaultValue = ""
+                    }
+                )
+            ) { navBackStackEntry ->
+                val optionsString =
+                    navBackStackEntry.arguments?.getString(DestinationArgs.ARG_OPTIONS)
+                        ?: ""
+                val options = optionsString.split(",")
+                DrinkResult(
+                    options = options,
+                    onOrderAgain = { navController.popBackStack(route = AppDestination.HOME.route, inclusive = false) },
                     navigateBack = { navController.popBackStack() }
                 )
             }
