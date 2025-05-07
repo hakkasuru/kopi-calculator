@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hakkasuru.kopicalculator.widgets.AppBar
@@ -101,7 +102,13 @@ private fun OptionsBar(options: List<String>, onSelect: (String) -> Unit) {
                 },
                 selected = selectedIndex == index
             ) {
-                Text(text = option, modifier = Modifier.padding(4.dp))
+                Text(
+                    text = option,
+                    modifier = Modifier.padding(4.dp),
+                    fontSize = 14.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         }
     }
