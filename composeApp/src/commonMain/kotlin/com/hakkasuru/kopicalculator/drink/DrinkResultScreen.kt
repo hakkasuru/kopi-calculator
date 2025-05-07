@@ -104,7 +104,7 @@ fun DrinkResult(
                 onClick = onOrderAgain,
                 modifier = Modifier.fillMaxWidth().padding(16.dp).align(Alignment.BottomCenter)
             ) {
-                Text("Order Again")
+                Text("Order Again", modifier = Modifier.padding(8.dp), fontSize = 16.sp)
             }
         }
     }
