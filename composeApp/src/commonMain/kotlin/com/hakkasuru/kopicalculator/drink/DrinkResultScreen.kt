@@ -184,7 +184,7 @@ private fun mapToResult(options: List<String>): Pair<String, String> {
             drinkDescription += ", but stronger and more concentrated"
         }
         "No Water" -> {
-            drink += "Di Lo"
+            drink += " Di Lo"
             drinkDescription += ", with no water added (extra concentrated)"
         }
         else -> Unit
